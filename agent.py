@@ -124,7 +124,7 @@ Swing trade horizon is 5-15 days. Focus on momentum and trend continuation setup
 from anthropic import Anthropic
 from config import ANTHROPIC_API_KEY
 
-print(f"API Key being used: {ANTHROPIC_API_KEY[:20]}...")
+# print(f"API Key being used: {ANTHROPIC_API_KEY[:20]}...")
 client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
 
