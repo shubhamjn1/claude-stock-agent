@@ -1,0 +1,49 @@
+name: Stock Agent - Daily NSE Analysis
+
+on:
+  schedule:
+    - cron: '0 4 * * 1-5'  # 9:30 AM IST = 4:00 AM UTC, weekdays only
+  workflow_dispatch:  # allows manual trigger from GitHub UI
+
+jobs:
+  run-stock-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create config.py from secrets
+        run: |
+          cat > config.py << EOF
+          ANTHROPIC_API_KEY = "${{ secrets.ANTHROPIC_API_KEY }}"
+          EMAIL_SENDER = "${{ secrets.EMAIL_SENDER }}"
+          EMAIL_PASSWORD = "${{ secrets.EMAIL_PASSWORD }}"
+          EMAIL_RECEIVER = "${{ secrets.EMAIL_RECEIVER }}"
+          RSS_FEEDS = [
+              "https://economictimes.indiatimes.com/markets/rss.cms",
+              "https://www.moneycontrol.com/rss/marketreports.xml",
+              "https://www.business-standard.com/rss/markets-106.rss"
+          ]
+          EOF
+
+      - name: Create credentials.json from secrets
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+
+      - name: Run stock agent
+        run: python main.py
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: agent-logs
+          path: '*.log'
