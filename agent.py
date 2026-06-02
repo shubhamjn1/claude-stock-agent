@@ -115,7 +115,9 @@ Rules:
 - Aim for 3-5 picks maximum, ranked by conviction
 - When done with analysis, call send_email with a clean HTML formatted briefing
 - Before sending the email, call save_recommendations with structured data for each recommended stock
-
+- Only recommend stocks where the technical setup supports minimum 10% upside target
+- Risk/reward must be at least 1:2 — stop loss should be half the distance of the target
+- Preferred setups: stocks bouncing from strong support with clear room to run
 
 Swing trade horizon is 5-15 days. Focus on momentum and trend continuation setups.
 """
