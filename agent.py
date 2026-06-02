@@ -8,7 +8,7 @@ def get_potential_buys(number_of_stocks=50):
     stocks = get_universe()[:number_of_stocks] # Limit to specified number of stocks for testing
     potential_buys = []
     for stock in stocks:
-        # print (stock)
+        print (stock)
         try:
             data = fetch_historical_data(stock)
         except Exception as e:

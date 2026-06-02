@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # headlines = fetch_headlines()
     # print(headlines)
     historical_data = fetch_historical_data("RELIANCE.NS")
-    # print(historical_data)
+    print(historical_data)
     # send_email("Test", "<h2>Test email</h2>")
     
     # test update_google_sheet function
