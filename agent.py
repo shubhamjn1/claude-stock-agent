@@ -230,7 +230,7 @@ def run_agent(filtered_symbols, headlines):
 # test 
 if __name__ == "__main__":
     print("Testing stock data fetching and analysis...")
-    potential_stocks = get_potential_buys(number_of_stocks=20) 
+    potential_stocks = get_potential_buys(number_of_stocks=200) 
     print ("Potential Stocks to Buy:", len(potential_stocks))
     
     # store only the symbols in a list
