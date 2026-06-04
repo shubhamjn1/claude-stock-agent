@@ -2,7 +2,7 @@ name: Stock Agent - Daily NSE Analysis
 
 on:
   schedule:
-    - cron: '45 09 * * 1-5'  # 9:30 AM IST = 4:00 AM UTC, weekdays only
+    - cron: '15 04 * * 1-5'  # 9:30 AM IST = 4:00 AM UTC, weekdays only
   workflow_dispatch:  # allows manual trigger from GitHub UI
 
 jobs:
